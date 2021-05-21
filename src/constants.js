@@ -1,0 +1,1 @@
+export const StarcraftLogo = 'http://pngimg.com/uploads/starcraft/starcraft_PNG35.png'
