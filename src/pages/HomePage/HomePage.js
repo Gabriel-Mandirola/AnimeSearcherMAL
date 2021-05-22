@@ -8,16 +8,16 @@ export const HomePage = ({setAnime}) => {
 const history = useHistory ()
 
 function handleSearchClick() {
-    setAnime("air")
+    setAnime("clannad")
     history.replace("/card")
 }
 
     return (
 
          
-    <Home>
+    <Home className="home">
     <Wrapper>  
-      <LogoImagen src={logo}></LogoImagen>    
+      <LogoImagen src="https://vignette.wikia.nocookie.net/enanimanga/images/7/76/Myanimelist_logo.png/revision/latest?cb=20191121020509"></LogoImagen>    
     <input style={{marginBottom: "20px"}}type="search"/>
     <ButtonsWrapper style={{
       display: "flex"
@@ -38,7 +38,7 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-background-image: url('https://wallpaperaccess.com/full/1656032.jpg');
+background-image: url('https://getwallpapers.com/wallpaper/full/f/9/2/31164.jpg');
 `;
 
 const Wrapper = styled.div`
@@ -49,6 +49,10 @@ flex-direction: column;
 
 const LogoImagen = styled.img`
 width: 350px;
+-webkit-filter: drop-shadow(1px 1px 0 black)
+                  drop-shadow(-1px -1px 0 black);
+  filter: drop-shadow(1px 1px 0 black) 
+          drop-shadow(-1px -1px 0 black);
 `
 const ButtonsWrapper = styled.div`
 

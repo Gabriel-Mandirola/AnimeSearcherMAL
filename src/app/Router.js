@@ -15,7 +15,7 @@ export const Router = () => {
           <BrowserRouter>
          < Switch>
            <Route path="/card">
-             <div className="hola">
+             <div className="cardStyle">
              <Card anime={anime}/>
              </div>
            </Route>
