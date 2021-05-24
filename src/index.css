@@ -38,12 +38,23 @@ img.imagen {
   box-sizing: border-box;
   height: 40px;
   width: 100%; 
-  box-sizing: border-box;
-  display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0 20px;
+  font-size: 14px;
 }
-
+.titsulo{
+height: 40px;
+    
+    padding: 0 20px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    color: #343434;
+    font-weight: 700;
+  }
 .imagenBox{
   background-color: whitesmoke;
   border-top: 25px;
@@ -52,4 +63,57 @@ img.imagen {
   border-bottom-left-radius: 25px;
   border-bottom-right-radius: 25px;
   height: 360px;
+  width: 205px;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+.imagenBox img{
+ height: 320px;
+ width: 205px;
+}
+
+.imagenBox p{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.boxFavoritos{
+  background-color: red;
+  width: 100px;
+  height: 100px;
+}
+
+.boxFavoritosSI{
+  background-color: whitesmoke;
+  border-top: 25px;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  flex-wrap: wrap;
+  overflow: hidden;
+  margin: 5px;
+  /* background: linear-gradient(to right,#2E51A2,#1B7AC2);
+   */
+}
+
+.boxFavoritosSI img{
+  height: 320px;
+  width: 205px;
+}
+
+.boxFavoritosSI p{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  color: #343434;
+  font-weight: bold;
+  box-sizing: border-box;
+  /* height: 40px; */
+  width: 100%; 
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  font-size: 14px; 
 }

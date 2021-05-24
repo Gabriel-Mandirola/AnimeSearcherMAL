@@ -1,33 +1,61 @@
 import styled from 'styled-components'
-import {useHistory} from 'react-router'
-import logo from '../../Logo-starcraft2.png'
+import { useHistory } from 'react-router'
 import React from 'react'
 
+let valueInput = ''
+export const HomePage = ({ setAnime, favorites }) => {
+  const [animeElejido, setAnimeElejido] = React.useState();
 
-export const HomePage = ({setAnime}) => {
-const history = useHistory ()
 
-function handleSearchClick() {
-    setAnime("clannad")
+  const [favoritos, setFavoritos] = React.useState(() =>
+    JSON.parse(window.localStorage.getItem("anime")));
+
+  React.useEffect(() => {
+    window.localStorage.setItem("anime", JSON.stringify(favoritos))
+  }, [favoritos])
+
+  const history = useHistory()
+
+  function handleSearchClick() {
+    setAnime(animeElejido)
     history.replace("/card")
-}
+  }
 
-    return (
+  function handleInputChange(event) {
+    setAnimeElejido(event.target.value);
+  }
 
-         
+
+  return (
+
+
     <Home className="home">
-    <Wrapper>  
-      <LogoImagen src="https://vignette.wikia.nocookie.net/enanimanga/images/7/76/Myanimelist_logo.png/revision/latest?cb=20191121020509"></LogoImagen>    
-    <input style={{marginBottom: "20px"}}type="search"/>
-    <ButtonsWrapper style={{
-      display: "flex"
-    }}>
-    <button onClick ={handleSearchClick}>Buscar</button>      
-    <button>¡Azar!</button>
-    </ButtonsWrapper>
-    </Wrapper>      
-  </Home>
-    )
+      {/* <h1>{favoritos.nombre}{favoritos.genero}</h1>
+      <button onClick={() => setFavoritos({
+        nombre: favorites[0].title,
+        genero: "triste"
+      })}></button> */}
+      <Wrapper>
+
+        <LogoImagen src="https://vignette.wikia.nocookie.net/enanimanga/images/7/76/Myanimelist_logo.png/revision/latest?cb=20191121020509"></LogoImagen>
+        <SearchBar
+          placeholder="¿Qué animé querés buscar?"
+          value={animeElejido}
+          onChange={handleInputChange}
+          type="search"
+        />
+        <ButtonsWrapper style={{
+          display: "flex"
+        }}>
+          <button onClick={handleSearchClick}>Buscar</button>
+          <button>¡Azar!</button>
+        </ButtonsWrapper>
+
+
+
+      </Wrapper>
+    </Home>
+  )
 
 }
 
@@ -45,6 +73,7 @@ const Wrapper = styled.div`
 width: 50%;
 display: flex;
 flex-direction: column;
+align-items: center;
 `
 
 const LogoImagen = styled.img`
@@ -65,7 +94,7 @@ gap: 20px;
 
 border-radius: 6px;
 button{
-  cursos: pointer;
+  cursor: pointer;
   background-color: red;
   border: none;
   color: white;
@@ -86,3 +115,9 @@ button{
 }
 }
 `
+
+const SearchBar = styled.input`
+  width: 100%;
+  margin-bottom: 20px;
+  margin-top: 20px;
+`;
