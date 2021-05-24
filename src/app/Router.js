@@ -7,6 +7,13 @@ export const Router = () => {
   const [anime, setAnime] = React.useState();
   const [favorites, setFavorites] = React.useState([])
 
+  const [favoritos, setFavoritos] = React.useState(() =>
+    JSON.parse(window.localStorage.getItem("anime")));
+
+  React.useEffect(() => {
+    window.localStorage.setItem("anime", JSON.stringify(favorites))
+  }, [favorites])
+
 
   function handleSetFavorites(anime) {
     setFavorites([...favorites, anime]);

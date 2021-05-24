@@ -5,19 +5,35 @@ import React from 'react'
 let valueInput = ''
 export const HomePage = ({ setAnime, favorites }) => {
   const [animeElejido, setAnimeElejido] = React.useState();
+  function makeid(length) {
+    var result = [];
+    var characters = 'abcdefghijklmnopqrstuvwxyz';
+    var charactersLength = characters.length;
+    for (var i = 0; i < length; i++) {
+      result.push(characters.charAt(Math.floor(Math.random() *
+        charactersLength)));
+    }
+    return result.join('');
+  }
 
 
-  const [favoritos, setFavoritos] = React.useState(() =>
-    JSON.parse(window.localStorage.getItem("anime")));
 
-  React.useEffect(() => {
-    window.localStorage.setItem("anime", JSON.stringify(favoritos))
-  }, [favoritos])
+  // const [favoritos, setFavoritos] = React.useState(() =>
+  //   JSON.parse(window.localStorage.getItem("anime")));
+
+  // React.useEffect(() => {
+  //   window.localStorage.setItem("anime", JSON.stringify(favoritos))
+  // }, [favoritos])
 
   const history = useHistory()
 
   function handleSearchClick() {
     setAnime(animeElejido)
+    history.replace("/card")
+  }
+  function handleSearchAzar() {
+    setAnime(makeid(3))
+    console.log(makeid(3));
     history.replace("/card")
   }
 
@@ -48,7 +64,7 @@ export const HomePage = ({ setAnime, favorites }) => {
           display: "flex"
         }}>
           <button onClick={handleSearchClick}>Buscar</button>
-          <button>¡Azar!</button>
+          <button onClick={handleSearchAzar}>¡Azar!</button>
         </ButtonsWrapper>
 
 
@@ -95,7 +111,7 @@ gap: 20px;
 border-radius: 6px;
 button{
   cursor: pointer;
-  background-color: red;
+  background: linear-gradient(to right,#2E51A2,#1B7AC2);
   border: none;
   color: white;
   padding: 10px;

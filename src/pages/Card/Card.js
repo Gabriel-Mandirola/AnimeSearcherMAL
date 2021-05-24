@@ -28,11 +28,20 @@ export const Card = ({ anime, addFavorite, favorites, deleteFav }) => {
     const [status, setStatus] = React.useState("idle");
 
 
-    const [favoritos, setFavoritos] = React.useState(() =>
-        JSON.parse(window.localStorage.getItem("anime")));
+    const [favoritesList, setFavoritesList] = React.useState(() =>
+        JSON.parse(window.localStorage.getItem('anime'))
+    )
     React.useEffect(() => {
-        window.localStorage.setItem("anime", JSON.stringify(favorites))
-    }, [favoritos])
+        window.localStorage.setItem('anime', JSON.stringify(favoritesList))
+
+    }, [favoritesList])
+
+
+    // const [favoritos, setFavoritos] = React.useState(() =>
+    //     JSON.parse(window.localStorage.getItem("anime")));
+    // React.useEffect(() => {
+    //     window.localStorage.setItem("anime", JSON.stringify(favorites))
+    // }, [favoritos])
 
 
     React.useEffect(() => {
@@ -43,10 +52,9 @@ export const Card = ({ anime, addFavorite, favorites, deleteFav }) => {
 
     }, [anime])
 
-    const favoritesID = favorites.map((favorites) => favorites.mal_id)
+    const favoritesID = favorites && Object.keys(favorites).map((favorites) => favorites.mal_id)
 
-    const isAnimeAdded =
-        animeData && favoritesID.includes(animeData[0].mal_id)
+    const isAnimeAdded = animeData && favoritesID.includes(animeData[0].mal_id)
 
     const history = useHistory()
     // https://api.jikan.moe/v3/anime/431
@@ -93,6 +101,7 @@ export const Card = ({ anime, addFavorite, favorites, deleteFav }) => {
                     genero: favorites[0].mal_id
 
                 })}></button> */}
+
                 <button onClick={() => history.push("/")}>Volver</button>
                 {
                     animeData && (<div className="imagenBoxContent" > <div className="imagenBox">
@@ -123,7 +132,7 @@ export const Card = ({ anime, addFavorite, favorites, deleteFav }) => {
                 </div> */}
                 <div>
                     {/* <p>{favorites.map((favorite) => `${favorite.title}`)}</p> */}
-                    <p>{Object.keys(favorites).map((index) =>
+                    <p>{favorites && Object.keys(favorites).map((index) =>
                         <div className="boxFavoritosSI">
                             <AnimeFavoritos
                                 // imagen={favorites[index].image_url}
@@ -140,7 +149,9 @@ export const Card = ({ anime, addFavorite, favorites, deleteFav }) => {
         )
     } else if (status === "error") {
         return (
-            <h1>Algo salio mal</h1>
+            <div>
+                <button onClick={() => history.push("/")}>Volver</button>
+                <h1>Algo salio mal</h1></div>
         )
     }
     // <img src={animeData.results[0].image_url} alt={animeData.results[0].title} />  
