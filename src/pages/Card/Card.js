@@ -230,9 +230,6 @@ background-color: whitesmoke;
   align-items: center;
   padding: 0 20px;
   font-size: 14px; 
-  white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
 }
 `
 
@@ -246,6 +243,9 @@ color: #343434;
   align-items: center;
   padding: 10px 20px;
   font-size: 14px;
+  white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 `
 const Links = styled.a`
 text-decoration: none; 
