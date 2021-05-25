@@ -28,13 +28,13 @@ export const Card = ({ anime, addFavorite, favorites, deleteFav }) => {
     const [status, setStatus] = React.useState("idle");
 
 
-    const [favoritesList, setFavoritesList] = React.useState(() =>
-        JSON.parse(window.localStorage.getItem('anime'))
-    )
-    React.useEffect(() => {
-        window.localStorage.setItem('anime', JSON.stringify(favoritesList))
+    // const [favoritesList, setFavoritesList] = React.useState(() =>
+    //     JSON.parse(window.localStorage.getItem('anime'))
+    // )
+    // React.useEffect(() => {
+    //     window.localStorage.setItem('anime', JSON.stringify(favoritesList))
 
-    }, [favoritesList])
+    // }, [favoritesList])
 
 
     // const [favoritos, setFavoritos] = React.useState(() =>
@@ -52,9 +52,16 @@ export const Card = ({ anime, addFavorite, favorites, deleteFav }) => {
 
     }, [anime])
 
-    const favoritesID = favorites && Object.keys(favorites).map((favorites) => favorites.mal_id)
+    const favoritesID = favorites && favorites.map((favorites) => favorites.mal_id)
 
-    const isAnimeAdded = animeData && favoritesID.includes(animeData[0].mal_id)
+    // function favoritesAD() {
+    //     if (favorites !== null) {
+    //         (favorites.map((favorites) => favorites.mal_id))
+    //     } else { }
+    // }
+    const print = animeData && console.log(animeData[0].mal_id)
+    console.log(print)
+    const isAnimeAdded = animeData && favoritesID && favoritesID.includes(animeData[0].mal_id)
 
     const history = useHistory()
     // https://api.jikan.moe/v3/anime/431

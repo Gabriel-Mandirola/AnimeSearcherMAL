@@ -5,7 +5,8 @@ import { HomePage } from './../pages/HomePage'
 
 export const Router = () => {
   const [anime, setAnime] = React.useState();
-  const [favorites, setFavorites] = React.useState([])
+  const [favorites, setFavorites] = React.useState(() =>
+    JSON.parse(window.localStorage.getItem("anime")))
 
   const [favoritos, setFavoritos] = React.useState(() =>
     JSON.parse(window.localStorage.getItem("anime")));
@@ -16,9 +17,10 @@ export const Router = () => {
 
 
   function handleSetFavorites(anime) {
-    setFavorites([...favorites, anime]);
+    setFavorites([anime])
+    favorites && setFavorites([...favorites, anime]);
     console.log(favorites)
-
+    console.log(favoritos)
   }
 
   function deleteFav(animeMal_id) {
