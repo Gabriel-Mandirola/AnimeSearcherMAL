@@ -61,7 +61,9 @@ export const Card = ({ anime, addFavorite, favorites, deleteFav }) => {
     //         (favorites.map((favorites) => favorites.mal_id))
     //     } else { }
     // }
+
     const print = animeData && console.log(animeData[0].mal_id)
+
     console.log(print)
     const isAnimeAdded = animeData && favoritesID && favoritesID.includes(animeData[0].mal_id)
 
@@ -228,6 +230,9 @@ background-color: whitesmoke;
   align-items: center;
   padding: 0 20px;
   font-size: 14px; 
+  white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 `
 

@@ -32,8 +32,9 @@ export const HomePage = ({ setAnime, favorites }) => {
     history.replace("/card")
   }
   function handleSearchAzar() {
-    setAnime(makeid(3))
-    console.log(makeid(3));
+    let azar = (makeid(3))
+    setAnime(azar)
+    console.log(azar);
     history.replace("/card")
   }
 
