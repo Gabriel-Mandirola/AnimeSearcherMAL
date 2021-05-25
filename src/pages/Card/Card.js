@@ -189,9 +189,40 @@ background-color: whitesmoke;
   width: 225px;
   flex-wrap: wrap;
   overflow: hidden;
+  :hover {
+            animation: effect 0.4s ;
+            animation-duration: 0.4s;
+        }
+  
+        @keyframes effect {
+            0% {
+                transform: translateX(0px) rotate(0deg);
+            }
+  
+            20% {
+                transform: translateX(-4px) rotate(-4deg);
+            }
+  
+            40% {
+                transform: translateX(-2px) rotate(-2deg);
+            }
+  
+            60% {
+                transform: translateX(4px) rotate(4deg);
+            }
+  
+            80% {
+                transform: translateX(2px) rotate(2deg);
+            }
+  
+            100% {
+                transform: translateX(0px) rotate(0deg);
+            }
+        }
   img{
  height: 320px;
  width: 225px;
+ 
  p{
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -210,8 +241,39 @@ background-color: whitesmoke;
   flex-wrap: wrap;
   overflow: hidden;
   margin: 5px;
+  transition: 5s;
   /* background: linear-gradient(to right,#2E51A2,#1B7AC2);
    */
+  :hover {
+            animation: effect 0.4s ;
+            animation-duration: 0.4s;
+        }
+  
+        @keyframes effect {
+            0% {
+                transform: translateX(0px) rotate(0deg);
+            }
+  
+            20% {
+                transform: translateX(-4px) rotate(-4deg);
+            }
+  
+            40% {
+                transform: translateX(-2px) rotate(-2deg);
+            }
+  
+            60% {
+                transform: translateX(4px) rotate(4deg);
+            }
+  
+            80% {
+                transform: translateX(2px) rotate(2deg);
+            }
+  
+            100% {
+                transform: translateX(0px) rotate(0deg);
+            }
+        }
   img{
   height: 320px;
   width: 205px;
@@ -230,6 +292,7 @@ background-color: whitesmoke;
   align-items: center;
   padding: 0 20px;
   font-size: 14px; 
+  
 }
 `
 
@@ -250,6 +313,12 @@ color: #343434;
 const Links = styled.a`
 text-decoration: none; 
 `
+const ButtonVolver = styled.button`
 
+
+   filter: brightness(0.8);
+   transform: translateY(-4px);
+   background: linear-gradient(to right,#1B7AC2,#2E51A2);
+`
 
 

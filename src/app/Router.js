@@ -73,6 +73,11 @@ button{
     padding: 10px;
     border-radius: 6px;
     font-weight: 600;
-    transition: all ease-out 0.3s; 
+    transition: 1s; 
+    &:hover{
+   filter: brightness(0.8);
+   
+   background: linear-gradient(to right,#1B7AC2,#2E51A2);  
+ }
 }
 `
