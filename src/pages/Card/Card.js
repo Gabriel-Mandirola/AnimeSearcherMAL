@@ -47,12 +47,26 @@ export const Card = ({ anime, addFavorite, favorites, deleteFav }) => {
 
 
     React.useEffect(() => {
-        setStatus("loading")
-        fetch(`https://api.jikan.moe/v3/search/anime?q=${anime}&limit=1`).then((response) =>
-            response.json().then((data) => setAnimeData(data.results)).catch(error => setStatus("error")).finally(setStatus("idle"))
-        );
+        setStatus("loading");
+        console.log(animeData)
+        console.log(status)
+        fetch(`https://api.jikan.moe/v3/search/anime?q=${anime}&limit=1`)
+            .then((response) => {
+                response.json().then((data) => {
+                    setAnimeData(data.results)
+                    if (data.results.length !== 0) {
+                        setAnimeData(data.results)
+                        setStatus("idle")
+                    } else {
+                        setStatus("error")
+                    }
+                })
+            })
+        //    .then((response) => response.json().then((data) => setAnimeData(data.results)))
+        // .catch((error) => setStatus("error"))
+        // .finally(setStatus("idle")));
 
-    }, [anime])
+    }, [])
 
     const favoritesID = favorites && favorites.map((favorites) => favorites.mal_id)
 
@@ -65,7 +79,19 @@ export const Card = ({ anime, addFavorite, favorites, deleteFav }) => {
     //const print = animeData && console.log(animeData[0].mal_id)
 
     //console.log(print)
-    const isAnimeAdded = animeData && favoritesID && favoritesID.includes(animeData[0].mal_id)
+
+    function isAnimeAdded() {
+        if (animeData && animeData[0].mal_id != undefined) {
+            console.log(status)
+            return animeData && favoritesID && favoritesID.includes(animeData[0].mal_id);
+
+        } else {
+            setStatus("error")
+            console.log(status)
+        }
+    }
+
+
 
     const history = useHistory()
     // https://api.jikan.moe/v3/anime/431
@@ -128,10 +154,10 @@ export const Card = ({ anime, addFavorite, favorites, deleteFav }) => {
                             <Titulo>{animeData[0].title}</Titulo>
                         </Links>
                     </ImagenBox>
-                        <button onClick={isAnimeAdded ?
+                        <button onClick={isAnimeAdded() ?
                             () => deleteFav(animeData[0].mal_id) :
                             () => addFavorite(animeData[0])}>
-                            {isAnimeAdded ? "Borrar de favoritos" : "Agregar a favoritos"}
+                            {isAnimeAdded() ? "Borrar de favoritos" : "Agregar a favoritos"}
                         </button>
                     </ImagenBoxContent>
                     )
