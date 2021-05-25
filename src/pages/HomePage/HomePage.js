@@ -28,8 +28,18 @@ export const HomePage = ({ setAnime, favorites }) => {
   const history = useHistory()
 
   function handleSearchClick() {
-    setAnime(animeElejido)
-    history.replace("/card")
+    if (animeElejido) {
+      if (animeElejido.length >= 3) {
+        setAnime(animeElejido)
+        history.replace("/card")
+      } else {
+        alert("Ingresa al menos 3 caracteres");
+      }
+    }
+    else {
+      alert("Ingresa al menos 3 caracteres");
+    }
+
   }
   function handleSearchAzar() {
     let azar = (makeid(3))

@@ -62,9 +62,9 @@ export const Card = ({ anime, addFavorite, favorites, deleteFav }) => {
     //     } else { }
     // }
 
-    const print = animeData && console.log(animeData[0].mal_id)
+    //const print = animeData && console.log(animeData[0].mal_id)
 
-    console.log(print)
+    //console.log(print)
     const isAnimeAdded = animeData && favoritesID && favoritesID.includes(animeData[0].mal_id)
 
     const history = useHistory()
