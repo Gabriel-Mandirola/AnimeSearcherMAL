@@ -10,10 +10,12 @@ const AnimeInfo = ({ nombre, imagen }) => (
     </div>
 );
 
-const AnimeFavoritos = ({ nombre, imagen, id }) => (
+const AnimeFavoritos = ({ nombre, imagen, id, link }) => (
     <div>
         {/* <img src={imagen} /> */}
-        <p>{nombre}</p>
+        <Links href={link}>
+            <p>{nombre}</p>
+        </Links>
     </div>
 
 
@@ -111,7 +113,7 @@ export const Card = ({ anime, addFavorite, favorites, deleteFav }) => {
 
                 <button onClick={() => history.push("/")}>Volver</button>
                 {
-                    animeData && (<div className="imagenBoxContent" > <div className="imagenBox">
+                    animeData && (<ImagenBoxContent><ImagenBox>
                         {/* {Object.keys(animeData).map((animeInfo, index) => (
                             <AnimeInfo
                                 imagen={animeData[index].image_url}
@@ -119,15 +121,17 @@ export const Card = ({ anime, addFavorite, favorites, deleteFav }) => {
                                 key={index}
                           />
                         ))} */}
-                        <img src={animeData[0].image_url} alt={animeData[0].title} className="imagen" />
-                        <p className="titulo">{animeData[0].title}</p>
-                    </div>
+                        <Links href={animeData[0].url}>
+                            <img src={animeData[0].image_url} alt={animeData[0].title} />
+                            <Titulo>{animeData[0].title}</Titulo>
+                        </Links>
+                    </ImagenBox>
                         <button onClick={isAnimeAdded ?
                             () => deleteFav(animeData[0].mal_id) :
                             () => addFavorite(animeData[0])}>
                             {isAnimeAdded ? "Borrar de favoritos" : "Agregar a favoritos"}
                         </button>
-                    </div>
+                    </ImagenBoxContent>
                     )
                 }
                 {/* <div>
@@ -140,11 +144,13 @@ export const Card = ({ anime, addFavorite, favorites, deleteFav }) => {
                 <div>
                     {/* <p>{favorites.map((favorite) => `${favorite.title}`)}</p> */}
                     <p>{favorites && Object.keys(favorites).map((index) =>
-                        <div className="boxFavoritosSI">
+                        <BoxFavoritosSI>
                             <AnimeFavoritos
                                 // imagen={favorites[index].image_url}
+                                link={favorites[index].url}
                                 nombre={favorites[index].title}
-                            /></div>
+                            />
+                        </BoxFavoritosSI>
                     )}</p>
                 </div>
             </>
@@ -164,6 +170,81 @@ export const Card = ({ anime, addFavorite, favorites, deleteFav }) => {
     // <img src={animeData.results[0].image_url} alt={animeData.results[0].title} />  
     //<div>{renderAnimes()}</div>
 }
+
+
+const ImagenBoxContent = styled.div`
+display: contents;
+`
+
+const ImagenBox = styled.div`
+background-color: whitesmoke;
+  border-top: 25px;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  height: 360px;
+  width: 225px;
+  flex-wrap: wrap;
+  overflow: hidden;
+  img{
+ height: 320px;
+ width: 225px;
+ p{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+ }
+}
+`
+
+const BoxFavoritosSI = styled.div`
+background-color: whitesmoke;
+  border-top: 25px;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  flex-wrap: wrap;
+  overflow: hidden;
+  margin: 5px;
+  /* background: linear-gradient(to right,#2E51A2,#1B7AC2);
+   */
+  img{
+  height: 320px;
+  width: 205px;
+}
+
+ p{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  color: #343434;
+  font-weight: bold;
+  box-sizing: border-box;
+  /* height: 40px; */
+  width: 100%; 
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  font-size: 14px; 
+}
+`
+
+const Titulo = styled.p`
+color: #343434;
+  font-weight: bold;
+  box-sizing: border-box;
+  height: 40px;
+  width: 100%; 
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  font-size: 14px;
+`
+const Links = styled.a`
+text-decoration: none; 
+`
 
 
 

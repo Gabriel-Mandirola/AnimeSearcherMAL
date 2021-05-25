@@ -45,14 +45,13 @@ export const HomePage = ({ setAnime, favorites }) => {
   return (
 
 
-    <Home className="home">
+    <Home>
       {/* <h1>{favoritos.nombre}{favoritos.genero}</h1>
       <button onClick={() => setFavoritos({
         nombre: favorites[0].title,
         genero: "triste"
       })}></button> */}
       <Wrapper>
-
         <LogoImagen src="https://vignette.wikia.nocookie.net/enanimanga/images/7/76/Myanimelist_logo.png/revision/latest?cb=20191121020509"></LogoImagen>
         <SearchBar
           placeholder="¿Qué animé querés buscar?"
@@ -60,15 +59,10 @@ export const HomePage = ({ setAnime, favorites }) => {
           onChange={handleInputChange}
           type="search"
         />
-        <ButtonsWrapper style={{
-          display: "flex"
-        }}>
+        <ButtonsWrapper>
           <button onClick={handleSearchClick}>Buscar</button>
           <button onClick={handleSearchAzar}>¡Azar!</button>
         </ButtonsWrapper>
-
-
-
       </Wrapper>
     </Home>
   )
@@ -98,6 +92,7 @@ width: 350px;
                   drop-shadow(-1px -1px 0 black);
   filter: drop-shadow(1px 1px 0 black) 
           drop-shadow(-1px -1px 0 black);
+          
 `
 const ButtonsWrapper = styled.div`
 
