@@ -1,14 +1,6 @@
 import React from 'react'
 import { useHistory } from 'react-router'
 import styled from 'styled-components';
-const AnimeInfo = ({ nombre, imagen }) => (
-    <div>
-        <img src={imagen} />
-        <div>
-            <p>{nombre}</p>
-        </div>
-    </div>
-);
 
 const AnimeFavoritos = ({ nombre, imagen, id, link }) => (
     <div>
@@ -17,34 +9,11 @@ const AnimeFavoritos = ({ nombre, imagen, id, link }) => (
             <p>{nombre}</p>
         </Links>
     </div>
-
-
 );
 
-
-let AnimeList = [];
-
 export const Card = ({ anime, addFavorite, favorites, deleteFav }) => {
-
     const [animeData, setAnimeData] = React.useState();
     const [status, setStatus] = React.useState("idle");
-
-
-    // const [favoritesList, setFavoritesList] = React.useState(() =>
-    //     JSON.parse(window.localStorage.getItem('anime'))
-    // )
-    // React.useEffect(() => {
-    //     window.localStorage.setItem('anime', JSON.stringify(favoritesList))
-
-    // }, [favoritesList])
-
-
-    // const [favoritos, setFavoritos] = React.useState(() =>
-    //     JSON.parse(window.localStorage.getItem("anime")));
-    // React.useEffect(() => {
-    //     window.localStorage.setItem("anime", JSON.stringify(favorites))
-    // }, [favoritos])
-
 
     React.useEffect(() => {
         setStatus("loading");
@@ -62,23 +31,8 @@ export const Card = ({ anime, addFavorite, favorites, deleteFav }) => {
                     }
                 })
             })
-        //    .then((response) => response.json().then((data) => setAnimeData(data.results)))
-        // .catch((error) => setStatus("error"))
-        // .finally(setStatus("idle")));
-
     }, [])
-
     const favoritesID = favorites && favorites.map((favorites) => favorites.mal_id)
-
-    // function favoritesAD() {
-    //     if (favorites !== null) {
-    //         (favorites.map((favorites) => favorites.mal_id))
-    //     } else { }
-    // }
-
-    //const print = animeData && console.log(animeData[0].mal_id)
-
-    //console.log(print)
 
     function isAnimeAdded() {
         if (animeData && animeData[0].mal_id != undefined) {
@@ -91,64 +45,14 @@ export const Card = ({ anime, addFavorite, favorites, deleteFav }) => {
         }
     }
 
-
-
     const history = useHistory()
-    // https://api.jikan.moe/v3/anime/431
-    //console.log(data)
-    //setAnimeData(data)
-    //https://api.jikan.moe/v3/search/anime?q={anime}&limit=2
-    //https://pokeapi.co/api/v2/pokemon/pikachu
-
-    // function renderAnimes() {
-    //     const animeList = [];
-
-    //     this.animeData.forEach((AnimeInfo) =>{
-    //         let nombre = AnimeInfo.results.title;
-    //         let imagen = AnimeInfo.results.image_url;
-    //         animeList.push(<AnimeInfo nombre={nombre} imagen={imagen}/>)
-    //     });
-    //     return animeList;
-    // }
-
-    // function iterateAnimes(){
-    //     {animeData &&(
-    //     Object.keys(animeData).map((animeInfo)=>(
-    //         <div> 
-    //          imagen = {animeInfo.image_url}
-    //          nombre = {animeInfo.title}                            
-    //          key = {animeInfo.mal_id}
-    //         </div> 
-
-    //     ) ))}
-    // }
 
     if (status === "idle") {
         return (
             <>
-                {/* <div className="boxFavoritos">
-                    {Object.keys(favoritos).map((index) => (
-                        <AnimeFavoritos
-                            nombre={favoritos[index].title}
-                        />
-                    ))}</div> */}
-                {/* <h1>{favoritos.nombre}{favoritos.genero}</h1>
-                <button onClick={() => setFavoritos({
-                    nombre: favorites[0].title,
-                    genero: favorites[0].mal_id
-
-                })}></button> */}
-
                 <button onClick={() => history.push("/")}>Volver</button>
                 {
                     animeData && (<ImagenBoxContent><ImagenBox>
-                        {/* {Object.keys(animeData).map((animeInfo, index) => (
-                            <AnimeInfo
-                                imagen={animeData[index].image_url}
-                                nombre={animeData[index].title}
-                                key={index}
-                          />
-                        ))} */}
                         <Links href={animeData[0].url}>
                             <img src={animeData[0].image_url} alt={animeData[0].title} />
                             <Titulo>{animeData[0].title}</Titulo>
@@ -162,13 +66,6 @@ export const Card = ({ anime, addFavorite, favorites, deleteFav }) => {
                     </ImagenBoxContent>
                     )
                 }
-                {/* <div>
-                    {Object.keys(favoritos).map((index) => (
-                        <AnimeFavoritos
-                            nombre={favoritos[index].title}
-                            imagen={favoritos[index].image_url}
-                        />                    ))}
-                </div> */}
                 <FavoritesWrapper>
                     {/* <p>{favorites.map((favorite) => `${favorite.title}`)}</p> */}
                     {favorites && Object.keys(favorites).map((index) =>

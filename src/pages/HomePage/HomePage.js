@@ -3,8 +3,8 @@ import { useHistory } from 'react-router'
 import React from 'react'
 import logo from './../../imagenes/Myanimelist_logo.png'
 
-let valueInput = ''
-export const HomePage = ({ setAnime, favorites }) => {
+
+export const HomePage = ({ setAnime }) => {
   const [animeElejido, setAnimeElejido] = React.useState();
   function makeid(length) {
     var result = [];
