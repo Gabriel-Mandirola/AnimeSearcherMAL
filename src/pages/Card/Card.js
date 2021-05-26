@@ -2,10 +2,9 @@ import React from 'react'
 import { useHistory } from 'react-router'
 import styled from 'styled-components';
 
-const AnimeFavoritos = ({ nombre, imagen, id, link }) => (
+const AnimeFavoritos = ({ nombre, link }) => (
     <div>
-        {/* <img src={imagen} /> */}
-        <Links href={link}>
+        <Links href={link} target="_blank">
             <p>{nombre}</p>
         </Links>
     </div>
@@ -53,7 +52,7 @@ export const Card = ({ anime, addFavorite, favorites, deleteFav }) => {
                 <button onClick={() => history.push("/")}>Volver</button>
                 {
                     animeData && (<ImagenBoxContent><ImagenBox>
-                        <Links href={animeData[0].url}>
+                        <Links href={animeData[0].url} target="_blank">
                             <img src={animeData[0].image_url} alt={animeData[0].title} />
                             <Titulo>{animeData[0].title}</Titulo>
                         </Links>
