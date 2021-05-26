@@ -35,7 +35,7 @@ export const Card = ({ anime, addFavorite, favorites, deleteFav }) => {
     const favoritesID = favorites && favorites.map((favorites) => favorites.mal_id)
 
     function isAnimeAdded() {
-        if (animeData && animeData[0].mal_id != undefined) {
+        if (animeData && animeData[0].mal_id !== undefined) {
             console.log(status)
             return animeData && favoritesID && favoritesID.includes(animeData[0].mal_id);
 
@@ -67,7 +67,6 @@ export const Card = ({ anime, addFavorite, favorites, deleteFav }) => {
                     )
                 }
                 <FavoritesWrapper>
-                    {/* <p>{favorites.map((favorite) => `${favorite.title}`)}</p> */}
                     {favorites && Object.keys(favorites).map((index) =>
                         <BoxFavoritosSI>
                             <AnimeFavoritos
@@ -80,7 +79,6 @@ export const Card = ({ anime, addFavorite, favorites, deleteFav }) => {
                 </FavoritesWrapper>
             </>
         )
-
     } else if (status === "loading") {
         return (
             <h1>Cargando</h1>
@@ -92,8 +90,6 @@ export const Card = ({ anime, addFavorite, favorites, deleteFav }) => {
                 <h1>Algo salio mal</h1></div>
         )
     }
-    // <img src={animeData.results[0].image_url} alt={animeData.results[0].title} />  
-    //<div>{renderAnimes()}</div>
 }
 
 
@@ -121,8 +117,7 @@ background-color: whitesmoke;
   :hover {
             animation: effect 0.4s ;
             animation-duration: 0.4s;
-        }
-  
+        } 
         @keyframes effect {
             0% {
                 transform: translateX(0px) rotate(0deg);
@@ -151,7 +146,6 @@ background-color: whitesmoke;
   img{
  height: 320px;
  width: 225px;
- 
  p{
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -159,7 +153,6 @@ background-color: whitesmoke;
  }
 }
 `
-
 const BoxFavoritosSI = styled.div`
 background-color: whitesmoke;
   border-top: 25px;
@@ -171,12 +164,10 @@ background-color: whitesmoke;
   overflow: hidden;
   margin: 5px;
   transition: 5s;
- 
   :hover {
             animation: effect 0.4s ;
             animation-duration: 0.4s;
-        }
-  
+        } 
         @keyframes effect {
             0% {
                 transform: translateX(0px) rotate(0deg);
@@ -219,11 +210,8 @@ background-color: whitesmoke;
   align-items: center;
   padding: 0 20px;
   font-size: 14px; 
-  
-  
 }
 `
-
 const Titulo = styled.p`
 color: #343434;
   font-weight: bold;
@@ -241,12 +229,6 @@ color: #343434;
 const Links = styled.a`
 text-decoration: none; 
 `
-const ButtonVolver = styled.button`
 
-
-   filter: brightness(0.8);
-   transform: translateY(-4px);
-   background: linear-gradient(to right,#1B7AC2,#2E51A2);
-`
 
 

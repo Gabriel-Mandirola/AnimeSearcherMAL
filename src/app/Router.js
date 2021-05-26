@@ -9,8 +9,6 @@ export const Router = () => {
   const [favorites, setFavorites] = React.useState(() =>
     JSON.parse(window.localStorage.getItem("anime")))
 
-  const [favoritos, setFavoritos] = React.useState(() =>
-    JSON.parse(window.localStorage.getItem("anime")));
 
   React.useEffect(() => {
     window.localStorage.setItem("anime", JSON.stringify(favorites))
@@ -21,7 +19,6 @@ export const Router = () => {
     setFavorites([anime])
     favorites && setFavorites([...favorites, anime]);
     console.log(favorites)
-    console.log(favoritos)
   }
 
   function deleteFav(animeMal_id) {
