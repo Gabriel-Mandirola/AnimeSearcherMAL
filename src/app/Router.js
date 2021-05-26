@@ -39,7 +39,7 @@ export const Router = () => {
     <BrowserRouter>
       < Switch>
         <Route path="/card">
-          <CardStyle>
+          <CardStyle style={{ backgroundImage: "url(/FondoNubesAnime.jpg)" }}>
             <Card anime={anime} addFavorite={handleSetFavorites} favorites={favorites} deleteFav={deleteFav} setAnime={handleSetAnime} />
           </CardStyle>
         </Route>
@@ -57,7 +57,6 @@ export default Router;
 const CardStyle = styled.div`
 background-color: lightskyblue;
 height: 100vh;
-background-image: url('https://getwallpapers.com/wallpaper/full/f/9/2/31164.jpg');
 display: flex;
 flex-direction: column;
 justify-content: center;

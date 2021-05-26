@@ -169,9 +169,9 @@ export const Card = ({ anime, addFavorite, favorites, deleteFav }) => {
                             imagen={favoritos[index].image_url}
                         />                    ))}
                 </div> */}
-                <div>
+                <FavoritesWrapper>
                     {/* <p>{favorites.map((favorite) => `${favorite.title}`)}</p> */}
-                    <p>{favorites && Object.keys(favorites).map((index) =>
+                    {favorites && Object.keys(favorites).map((index) =>
                         <BoxFavoritosSI>
                             <AnimeFavoritos
                                 // imagen={favorites[index].image_url}
@@ -179,8 +179,8 @@ export const Card = ({ anime, addFavorite, favorites, deleteFav }) => {
                                 nombre={favorites[index].title}
                             />
                         </BoxFavoritosSI>
-                    )}</p>
-                </div>
+                    )}
+                </FavoritesWrapper>
             </>
         )
 
@@ -199,6 +199,12 @@ export const Card = ({ anime, addFavorite, favorites, deleteFav }) => {
     //<div>{renderAnimes()}</div>
 }
 
+
+const FavoritesWrapper = styled.div`
+ display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    `
 
 const ImagenBoxContent = styled.div`
 display: contents;
@@ -268,8 +274,7 @@ background-color: whitesmoke;
   overflow: hidden;
   margin: 5px;
   transition: 5s;
-  /* background: linear-gradient(to right,#2E51A2,#1B7AC2);
-   */
+ 
   :hover {
             animation: effect 0.4s ;
             animation-duration: 0.4s;
@@ -312,12 +317,12 @@ background-color: whitesmoke;
   color: #343434;
   font-weight: bold;
   box-sizing: border-box;
-  /* height: 40px; */
   width: 100%; 
   justify-content: center;
   align-items: center;
   padding: 0 20px;
   font-size: 14px; 
+  
   
 }
 `

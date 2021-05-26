@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 import { useHistory } from 'react-router'
 import React from 'react'
+import backgroundImg from './../../imagenes/FondoNubesAnime.jpg'
+import logo from './../../imagenes/Myanimelist_logo.png'
 
 let valueInput = ''
 export const HomePage = ({ setAnime, favorites }) => {
@@ -56,14 +58,9 @@ export const HomePage = ({ setAnime, favorites }) => {
   return (
 
 
-    <Home>
-      {/* <h1>{favoritos.nombre}{favoritos.genero}</h1>
-      <button onClick={() => setFavoritos({
-        nombre: favorites[0].title,
-        genero: "triste"
-      })}></button> */}
+    <Home style={{ backgroundImage: "url(/FondoNubesAnime.jpg)" }}>
       <Wrapper>
-        <LogoImagen src="https://vignette.wikia.nocookie.net/enanimanga/images/7/76/Myanimelist_logo.png/revision/latest?cb=20191121020509"></LogoImagen>
+        <LogoImagen src={logo} alt="Logo de My anime list"></LogoImagen>
         <SearchBar
           placeholder="¿Qué animé querés buscar?"
           value={animeElejido}
@@ -87,7 +84,6 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-background-image: url('https://getwallpapers.com/wallpaper/full/f/9/2/31164.jpg');
 `;
 
 const Wrapper = styled.div`
