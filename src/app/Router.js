@@ -39,7 +39,7 @@ export const Router = () => {
     <BrowserRouter>
       < Switch>
         <Route path="/card">
-          <CardStyle style={{ backgroundImage: "url(/FondoNubesAnime.jpg)" }}>
+          <CardStyle style={{ backgroundImage: "url(imagenes/FondoNubesAnime.jpg)" }}>
             <Card anime={anime} addFavorite={handleSetFavorites} favorites={favorites} deleteFav={deleteFav} setAnime={handleSetAnime} />
           </CardStyle>
         </Route>

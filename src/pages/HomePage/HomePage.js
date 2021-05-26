@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import { useHistory } from 'react-router'
 import React from 'react'
-import backgroundImg from './../../imagenes/FondoNubesAnime.jpg'
 import logo from './../../imagenes/Myanimelist_logo.png'
 
 let valueInput = ''
@@ -18,14 +17,6 @@ export const HomePage = ({ setAnime, favorites }) => {
     return result.join('');
   }
 
-
-
-  // const [favoritos, setFavoritos] = React.useState(() =>
-  //   JSON.parse(window.localStorage.getItem("anime")));
-
-  // React.useEffect(() => {
-  //   window.localStorage.setItem("anime", JSON.stringify(favoritos))
-  // }, [favoritos])
 
   const history = useHistory()
 
@@ -58,7 +49,7 @@ export const HomePage = ({ setAnime, favorites }) => {
   return (
 
 
-    <Home style={{ backgroundImage: "url(/FondoNubesAnime.jpg)" }}>
+    <Home style={{ backgroundImage: "url(imagenes/FondoNubesAnime.jpg)" }}>
       <Wrapper>
         <LogoImagen src={logo} alt="Logo de My anime list"></LogoImagen>
         <SearchBar
